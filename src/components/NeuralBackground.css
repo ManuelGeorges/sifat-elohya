@@ -1,0 +1,102 @@
+.neural-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #0a0c23 0%, #050610 90%);
+  /* إضافة تدرج ألوان أعمق وأكثر ديناميكية */
+  background-size: 200% 200%;
+  animation: backgroundPulse 30s ease-in-out infinite;
+}
+
+/* حركة تدرج الخلفية */
+@keyframes backgroundPulse {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* حركة خطوط SVG */
+.lines line {
+  animation: drift 6s ease-in-out infinite alternate;
+  transform-origin: center;
+  stroke: rgba(255, 255, 255, 0.15); /* خففت اللون عشان الخطوط تبقى ناعمة */
+  stroke-width: 1;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.2)); /* ضباب خفيف */
+}
+
+@keyframes drift {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate(0.5px, -0.5px) rotate(1deg);
+  }
+}
+
+/* وميض نجوم */
+.neural-background::before {
+  content: "";
+  position: absolute;
+  width: 400%;
+  height: 400%;
+  top: -150%;
+  left: -150%;
+  background-image: radial-gradient(white 1.2px, transparent 1.2px);
+  background-size: 4px 4px;
+  opacity: 0.04;
+  animation: stars 90s linear infinite;
+  filter: drop-shadow(0 0 1.5px white);
+}
+
+@keyframes stars {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0.04;
+  }
+  50% {
+    opacity: 0.08;
+  }
+  100% {
+    transform: translate(150px, 300px);
+    opacity: 0.04;
+  }
+}
+
+/* تشويش شفاف */
+.neural-background::after {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.05;
+  pointer-events: none;
+  animation: noiseMove 25s infinite alternate ease-in-out;
+  filter: contrast(1.2) brightness(1.1);
+}
+
+@keyframes noiseMove {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  100% {
+    transform: translate(-30px, 20px);
+  }
+}
+
+/* إضافة تأثير توهج خفيف على الحواف */
+.neural-background {
+  box-shadow: inset 0 0 50px 15px rgba(10, 12, 35, 0.8);
+  backdrop-filter: blur(8px);
+  will-change: transform;
+  /* تحسين أداء الحركة */
+}

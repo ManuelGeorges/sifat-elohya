@@ -1,38 +1,142 @@
-.App {
-  text-align: center;
+/* ====== Body and General ====== */
+body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  font-family: 'Cairo', 'Segoe UI', sans-serif;
+  background-size: 300% 300%;
+  animation: spaceMove 40s ease infinite;
+  color: #e9e6f9;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* ====== Background Animation ====== */
+@keyframes spaceMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* ====== Fade Animations ====== */
+@keyframes fadePage {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: .8;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ====== Main Container ====== */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  animation: fadePage 1.5s ease forwards;
+  opacity: 0;
+  border-radius: 22px;
+  transition: all 0.4s ease-in-out;
+}
+
+/* ====== Title Styling ====== */
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #e6d6ff;
+  text-shadow: 0 0 20px #9f5bff;
+}
+
+/* ====== Search Input Styling ====== */
+input[type="text"] {
+  padding: 14px 22px;
+  width: 100%;
+  max-width: 520px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 16px;
+  outline: none;
+  transition: all 0.4s ease;
+  margin-bottom: 30px;
+  box-shadow: 0 0 14px rgba(180, 140, 255, 0.15);
+  backdrop-filter: blur(6px);
+}
+
+input::placeholder {
+  color: #c9bbff;
+}
+
+input[type="text"]:focus {
+  border-color: #a27eff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 22px rgba(173, 216, 255, 0.35);
+}
+
+/* ====== Attribute Card Styling ====== */
+.attribute-card {
+  padding: 24px;
+  margin: 24px auto;
+  border-radius: 18px;
+  box-shadow: 0 0 24px rgba(170, 110, 220, 0.2);
+  text-align: start;
+  transition-duration: 1s;
+  display: inline-block;
+
+  backdrop-filter: blur(12px);
+}
+
+.attribute-card:hover {
+  transform: scale(1.5);
+  box-shadow: 0 0 28px rgba(200, 140, 255, 0.35);
+}
+
+.attribute-card h2 {
+  color: #e6d0ff;
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.attribute-card p,
+.attribute-card li {
+  color: #f4eaff;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.attribute-card ul {
+  margin-top: 10px;
+  padding-right: 24px;
+  list-style-type: disc;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+  .container {
+    padding: 40px 16px;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
+  }
+
+  .attribute-card {
+    padding: 18px;
+  }
+
+  .attribute-card h2 {
+    font-size: 1.3rem;
   }
 }

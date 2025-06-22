@@ -1,0 +1,201 @@
+/* ====== General Smooth Settings ====== */
+* {
+  transition: all 0.4s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* ====== Body Styling ====== */
+body {
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+  font-family: 'Cairo', 'Segoe UI', sans-serif;
+  background: radial-gradient(ellipse at bottom, #0a0018, #14002b, #0b0014);
+  background-size: 300% 300%;
+  animation: spaceMove 40s ease infinite;
+  color: #e9e6f9;
+  overflow-x: hidden;
+  animation: fadePage 1.6s ease forwards;
+}
+
+/* ====== Background Motion ====== */
+@keyframes spaceMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes fadePage {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ====== Floating Elements ====== */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+/* ====== Main Container ====== */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 60px 20px;
+  background: rgba(20, 0, 40, 0.5);
+  border-radius: 22px;
+  box-shadow: 0 0 45px rgba(160, 100, 255, 0.15);
+  backdrop-filter: blur(14px);
+  animation: fadeInUp 1.5s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+/* ====== Title ====== */
+h1 {
+  text-align: center;
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  color: #e6d6ff;
+  text-shadow: 0 0 20px #9f5bff;
+  animation: fadeInTitle 1.4s ease-out forwards;
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+@keyframes fadeInTitle {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ====== Input Field ====== */
+input[type="text"] {
+  padding: 14px 22px;
+  width: 100%;
+  max-width: 520px;
+  font-size: 18px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 16px;
+  outline: none;
+  margin-bottom: 30px;
+  box-shadow: 0 0 14px rgba(180, 140, 255, 0.15);
+  backdrop-filter: blur(6px);
+  animation: fadeInUp 1.6s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+input::placeholder {
+  color: #c9bbff;
+  transition: color 0.4s ease;
+}
+
+input:focus {
+  border-color: #a27eff;
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 22px rgba(173, 216, 255, 0.35);
+}
+
+/* ====== Attribute Cards ====== */
+.attribute-card {
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  margin: 24px 0;
+  color: #eee;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 14px rgba(173, 216, 230, 0.07);
+  animation: fadeInUp 1.5s ease forwards;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+.attribute-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 24px rgba(173, 216, 230, 0.25);
+}
+
+/* ====== Card Component ====== */
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  animation: cardEnter 1.2s ease forwards, float 6s ease-in-out infinite;
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.card:hover {
+  transform: scale(1.03) rotateX(1deg) rotateY(-1deg);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+  color: #f0f8ff;
+  text-shadow: 0 0 6px #8ab4f8;
+  transition: all 0.3s ease;
+}
+
+.card .explanation {
+  font-size: 1.1rem;
+  color: #e0e0e0;
+  margin-bottom: 14px;
+  line-height: 1.7;
+  transition: color 0.3s ease;
+}
+
+.card .refs {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.card .refs li {
+  margin-bottom: 6px;
+  color: #91e0ff;
+  font-size: 1rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.card .refs li:hover {
+  transform: scale(1.05);
+  color: #00ffd9;
+}
+
+.card .source {
+  font-size: 0.9rem;
+  color: #bbb;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+  text-align: left;
+  transition: all 0.3s ease;
+}
+
+/* ====== Animations ====== */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardEnter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
